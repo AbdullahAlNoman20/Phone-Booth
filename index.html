@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+
+
+    <title>Phone Details Using API</title>
+
+
+    
+
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <meta name="description" content="Free complete html tutorials 2021" />
+     <meta name="keywords" content="HTML, html, html5" />
+     <meta name="author" content="Abdullah AL Noman" />
+
+
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+     <script src="https://cdn.tailwindcss.com"></script>
+
+
+     <script src="https://kit.fontawesome.com/730c1d0e86.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <header class="p-5">
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><a>Homepage</a></li>
+                  <li><a>Product</a></li>
+                  <li><a>About</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="navbar-center">
+              <a class="font-extrabold text-5xl">Phone <span class="text-red-500">Booth</span> </a>
+            </div>
+            <div class="navbar-end">
+              <button class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                  <span class="badge badge-xs badge-primary indicator-item"></span>
+                </div>
+              </button>
+            </div>
+          </div>
+    </header>
+    <main>
+
+
+
+<!-- Search Section -->
+        <section class="my-5 flex bg-slate-100 p-4 gap-2 justify-center">
+
+            <label class="input input-bordered flex items-center gap-2">
+                <input id="search-Field" type="text" class="grow" placeholder="Search" />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+              </label>
+
+            <button onclick="handleSearch()" class="btn btn-outline btn-accent">Search</button>
+        </section>
+
+
+<!-- Search Reasult -->
+        <section class="">
+
+            <!-- Loader -->
+
+                <div id="loading-icon" class="text-center my-36 hidden">
+                    <span class="loading loading-infinity loading-lg"></span>
+                </div>
+
+
+            <div id="phone-container" class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                <!-- <div class="card w-96 bg-base-100 shadow-xl">
+                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                    <div class="card-body">
+                      <h2 class="card-title">Shoes!</h2>
+                      <p>If a dog chews shoes whose shoes does he choose?</p>
+                      <div class="card-actions justify-end">
+                        <button class="btn btn-outline btn-accent w-full">Buy Now</button>
+                      </div>
+                    </div>
+                  </div> -->
+
+            </div>
+            
+
+            <div id="showAll-Container" class="flex justify-center hidden my-5 ">
+                <button onclick="handelShowAll()" class="btn btn-outline btn-accent ">Show All</button>
+            </div>
+
+        </section>
+
+<!-- Details Page -->
+        <section>
+            <!-- Open the modal using ID.showModal() method -->
+        
+     <dialog id="showDetailsModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+         <h3 id="showPhoneName" class="font-bold text-lg"></h3>
+          <div id="detailContainer" class="">
+
+
+
+          </div>
+          <div class="modal-action">
+           <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+            <button class="btn btn-outline btn-accent">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+        </section>
+
+    </main>
+    <footer class="footer mt-10 p-10 bg-base-200 text-base-content">
+        <nav>
+          <h6 class="footer-title">Services</h6> 
+          <a class="link link-hover">Branding</a>
+          <a class="link link-hover">Design</a>
+          <a class="link link-hover">Marketing</a>
+          <a class="link link-hover">Advertisement</a>
+        </nav> 
+        <nav>
+          <h6 class="footer-title">Company</h6> 
+          <a class="link link-hover">About us</a>
+          <a class="link link-hover">Contact</a>
+          <a class="link link-hover">Jobs</a>
+          <a class="link link-hover">Press kit</a>
+        </nav> 
+        <nav>
+          <h6 class="footer-title">Legal</h6> 
+          <a class="link link-hover">Terms of use</a>
+          <a class="link link-hover">Privacy policy</a>
+          <a class="link link-hover">Cookie policy</a>
+        </nav> 
+        <form>
+          <h6 class="footer-title">Newsletter</h6> 
+          <fieldset class="form-control w-80">
+            <label class="label">
+              <span class="label-text">Enter your email address</span>
+            </label> 
+            <div class="join">
+              <input type="text" placeholder="username@gmail.com" class="input input-bordered join-item" /> 
+              <button class="btn btn-primary join-item">Subscribe</button>
+            </div>
+          </fieldset>
+        </form>
+      </footer>
+      <div class="footer footer-center p-4 bg-base-300 text-base-content">
+        <aside>
+          <p>Copyright © 2024 - All right reserved by Abdullah Al Noman</p>
+        </aside>
+      </div>
+
+    <script src="js/phone.js"></script>
+</body>
+</html>
